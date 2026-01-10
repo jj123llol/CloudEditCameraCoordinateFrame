@@ -45,27 +45,44 @@ end
 
 
 -- module functions
-mod['Listen'] = function(num, func)
-    if not listening[num] then
-        listening[num] = {}
-    end
-    table.insert(listening[num], func)
-end
 
-local function set(cf)
+local function set(cf : CFrame)
 	if method == 1 then
 		sethiddenproperty(lp, "CloudEditCameraCoordinateFrame", cf)
-	else
+    elseif method == 2 then
 		lp.CloudEditCameraCoordinateFrame = cf
 	end
 end
 
-mod["Send"] = function(channel, num1, num2)
-    local og = gethiddenproperty(lp, "CloudEditCameraCoordinateFrame")
-    local cf = CFrame.new(channel, num1, num2)
-    set(cf)
-    task.wait(.15)
-    set(og)
+mod['Listen'] = function(channel : number)
+    if not listening[num] then
+        listening[num] = {}
+    end
+    local listenmod = {}
+
+    listenmod['Unlisten'] = function()
+        table.remove(listening, num)
+    end
+
+    listenmod['AddFunction'] = function(func : function)
+        local funcmod = {}
+        table.insert(listening[num], func)
+
+        funcmod['Disconnect'] = function()
+            table.remove(listening[num], table.find(listening[num], func))
+        end
+        return funcmod
+    end
+
+    listenmod["Send"] = function(num1 : number, num2 : number)
+        local og = gethiddenproperty(lp, "CloudEditCameraCoordinateFrame")
+        local cf = CFrame.new(channel, num1, num2)
+        set(cf)
+        task.wait(.15)
+        set(og)
+    end
+
+    return listenmod
 end
 
 -- checking for messages
