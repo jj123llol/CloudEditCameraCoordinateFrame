@@ -4,6 +4,8 @@ local mod, listening, waiting, method = {}, {}, tick(), 1
 local plrs = game:GetService("Players")
 lp = plrs.LocalPlayer
 
+
+-- can u even use control :sob:
 local passed = pcall(function()
 	sethiddenproperty(lp, "CloudEditCameraCoordinateFrame", CFrame.new(0, 999, 999))
 end)
