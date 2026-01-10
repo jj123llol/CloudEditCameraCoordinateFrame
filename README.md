@@ -24,3 +24,8 @@ control.Send(1, 6767, 80085)
 
 I originally wanted to use Bug's animation socket to send client information
 but if you rejoined and ran the script again, it would fire every previously sent message at the same time (unless the person who ran them reset)..
+
+
+# -- // WHAT CAN I DO WITH THIS? \\\ --
+- Command system, num1 is a command id num2 represents a player.
+- Sending signals between players to execute functions, like reset or teleport to runner. 
