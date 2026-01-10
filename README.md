@@ -1,10 +1,12 @@
 # -- // ABOUT \\\ --
 
-each value can only handle 1 - 999999 (i think, im guessing. u can try more th0ugh)
+- each value can only handle 1 - 999999 (i think, im guessing. u can try more though)
 
-this module was made to send information between clients without it being visible in chat
-released & developed by really_ant.
-yes my code is bad, deal w/ it!!
+- this module was made to send information between clients without it being visible in chat
+  
+-released & developed by really_ant.
+
+-yes my code is bad, deal w/ it!!
 
 
 # -- // USAGE \\\ --
