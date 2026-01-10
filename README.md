@@ -13,7 +13,7 @@
 
 # -- // USAGE \\\ --
 ```lua
-local mod = loadstring(game:HttpGet("https://raw.githubusercontent.com/jj123llol/CloudEditCameraCoordinateFrame/refs/heads/main/src.lua", true))()
+local mod = loadstring(game:HttpGet('https://raw.githubusercontent.com/jj123llol/CloudEditCameraCoordinateFrame/refs/heads/main/src.lua', true))()
 
 -- start listening to channel
 local channel = mod.Listen(1)
