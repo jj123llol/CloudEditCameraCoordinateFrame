@@ -1,3 +1,5 @@
+# make sure to star this repo if you like this!
+
 # -- // ABOUT \\\ --
 
 - each value can only handle -999999 to 999999 (i think, im guessing. u can try more though)
