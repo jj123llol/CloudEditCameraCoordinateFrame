@@ -19,8 +19,8 @@ local mod = loadstring(game:HttpGet('https://raw.githubusercontent.com/jj123llol
 local channel = mod.Listen(1)
 
 -- add functions to channel
-local func = channel.AddFunction(function(num1, num2)
-  print(num1, num2)
+local func = channel.AddFunction(function(plr, num1, num2)
+  print(plr.Name, num1, num2)
 end)
 
 -- send message
