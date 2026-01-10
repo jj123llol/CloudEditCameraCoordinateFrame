@@ -9,7 +9,7 @@ yes my code is bad, deal w/ it!!
 
 # -- // USAGE \\\ --
 ```lua
-local control = loadstring here
+local control = loadstring(game:HttpGet("https://raw.githubusercontent.com/jj123llol/CloudEditCameraCoordinateFrame/refs/heads/main/src.lua", true))()
 
 -- listen for messages on channel 1
 control.Listen(1, function(num1, num2) -- make sure to include num1 and num2, u can rename them to other names if u want
