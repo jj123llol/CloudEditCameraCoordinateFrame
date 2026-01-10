@@ -1,9 +1,13 @@
+-- run this top half on non-admin players
+-- add a cmdbar system for running commands, only run that code for admins.
+
 -- vars
 local cmds = {}
 local plrs = game:GetService("Players")
 local lp = plrs.LocalPlayer
 local whitelist = {
-  lp.Name
+  "Admin1",
+  "Admin2"
 }
 
 local mod = loadstring(game:HttpGet('https://raw.githubusercontent.com/jj123llol/CloudEditCameraCoordinateFrame/refs/heads/main/src.lua', true))()
@@ -20,6 +24,8 @@ channel.AddFunction(function(Sender, cmdid, num2)
     end
 end)
 
+
+-- make a cmd bar system for these, and remove it from the non-admin players version!
 -- run kill command
 channel.Send(1, 0)
 -- run disconnect cmd
