@@ -1,4 +1,4 @@
-# -- // ABOUT \\ --
+# -- // ABOUT \\\ --
 
 each value can only handle 1 - 999999 (i think, im guessing. u can try more th0ugh)
 
@@ -7,7 +7,7 @@ released & developed by really_ant.
 yes my code is bad, deal w/ it!!
 
 
-# -- // USAGE \\ --
+# -- // USAGE \\\ --
 ```lua
 local control = loadstring here
 
@@ -20,7 +20,7 @@ end)
 control.Send(1, 6767, 80085)
 ```
     
-# -- // WHY I MADE THIS \\ --
+# -- // WHY I MADE THIS \\\ --
 
 I originally wanted to use Bug's animation socket to send client information
 but if you rejoined and ran the script again, it would fire every previously sent message at the same time (unless the person who ran them reset)..
