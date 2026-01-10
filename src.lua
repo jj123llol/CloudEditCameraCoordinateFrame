@@ -93,7 +93,7 @@ game:GetService("RunService").RenderStepped:Connect(function()
 		local data = gethiddenproperty(plr, "CloudEditCameraCoordinateFrame")
         if listening[data.X] then
             for _, func in pairs(listening[data.X]) do
-                func(data.Y, data.Z)
+                func(plr, data.Y, data.Z)
             end
         end
 	end
