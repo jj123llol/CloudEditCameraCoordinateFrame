@@ -54,6 +54,10 @@ local function set(cf : CFrame)
 	end
 end
 
+mod['RestChannel'] = function(channel : number)
+   set(CFrame.new(channel, 0, 0))
+end
+
 mod['Listen'] = function(channel : number)
     if not listening[channel] then
         listening[channel] = {}
