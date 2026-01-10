@@ -55,21 +55,21 @@ local function set(cf : CFrame)
 end
 
 mod['Listen'] = function(channel : number)
-    if not listening[num] then
-        listening[num] = {}
+    if not listening[channel] then
+        listening[channel] = {}
     end
     local listenmod = {}
 
     listenmod['Unlisten'] = function()
-        table.remove(listening, num)
+        table.remove(listening, channel)
     end
 
     listenmod['AddFunction'] = function(func : func)
         local funcmod = {}
-        table.insert(listening[num], func)
+        table.insert(listening[channel], func)
 
         funcmod['Disconnect'] = function()
-            table.remove(listening[num], table.find(listening[num], func))
+            table.remove(listening[channel], table.find(listening[channel], func))
         end
         return funcmod
     end
