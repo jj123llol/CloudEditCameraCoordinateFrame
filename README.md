@@ -13,13 +13,15 @@
 
 - yes my code is bad, deal w/ it!!
 
+- Dont listen to the channel you set as resting! the default resting is 0
+
 
 # -- // USAGE \\\ --
 ```lua
 local listener = loadstring(game:HttpGet('https://raw.githubusercontent.com/jj123llol/CloudEditCameraCoordinateFrame/refs/heads/main/src.lua', true))()
 
 -- set resting channel.
-listener.RestChannel(0) -- sets the users resting cframe to CFrame.new(0, 0, 0). Should be used at the start, right after defining the module.
+listener.RestChannel(500) -- sets the users resting cframe to CFrame.new(0, 0, 0). Should be used at the start, right after defining the module.
 
 -- start listening to channel
 local channel = listener.Listen(1)
