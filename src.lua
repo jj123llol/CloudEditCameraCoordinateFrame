@@ -1,4 +1,4 @@
--- set up vars
+-- set up vars.
 
 local mod, listening, waiting, method = {}, {}, tick(), 1
 local plrs = game:GetService("Players")
