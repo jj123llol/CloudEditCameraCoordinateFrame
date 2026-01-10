@@ -7,8 +7,6 @@
 
 - each value can only handle -999999 to 999999 (i think, im guessing. u can try more though)
 
-- dont use 0 as a channel, it is a resting pos!
-
 - this module was made to send information between clients without it being visible in chat
   
 - released & developed by really_ant.
@@ -18,10 +16,13 @@
 
 # -- // USAGE \\\ --
 ```lua
-local mod = loadstring(game:HttpGet('https://raw.githubusercontent.com/jj123llol/CloudEditCameraCoordinateFrame/refs/heads/main/src.lua', true))()
+local listener = loadstring(game:HttpGet('https://raw.githubusercontent.com/jj123llol/CloudEditCameraCoordinateFrame/refs/heads/main/src.lua', true))()
+
+-- set resting channel.
+listener.RestChannel(0) -- sets the users resting cframe to CFrame.new(0, 0, 0). Should be used at the start, right after defining the module.
 
 -- start listening to channel
-local channel = mod.Listen(1)
+local channel = listener.Listen(1)
 
 -- add functions to channel
 local func = channel.AddFunction(function(Sender, num1, num2)
