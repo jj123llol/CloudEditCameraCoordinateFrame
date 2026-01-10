@@ -64,7 +64,7 @@ mod['Listen'] = function(channel : number)
         table.remove(listening, num)
     end
 
-    listenmod['AddFunction'] = function(func : function)
+    listenmod['AddFunction'] = function(func : func)
         local funcmod = {}
         table.insert(listening[num], func)
 
