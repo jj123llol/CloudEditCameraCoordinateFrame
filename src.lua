@@ -75,10 +75,11 @@ mod['Listen'] = function(channel : number)
     end
 
     listenmod["Send"] = function(num1 : number, num2 : number)
+		num1, num2 = num1 or 30, num2 or 30
         local og = gethiddenproperty(lp, "CloudEditCameraCoordinateFrame")
         local cf = CFrame.new(channel, num1, num2)
         set(cf)
-        task.wait(.3)
+        task.wait(.15)
         set(og)
     end
 
@@ -90,7 +91,6 @@ game:GetService("RunService").RenderStepped:Connect(function()
 	if (tick() - waiting) < .1 then return end
 	for _, plr in pairs(plrs:GetPlayers()) do
 		local data = gethiddenproperty(plr, "CloudEditCameraCoordinateFrame")
-		print(data)
         if listening[data.X] then
             for _, func in pairs(listening[data.X]) do
                 func(data.Y, data.Z)
