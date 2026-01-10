@@ -13,15 +13,24 @@
 
 # -- // USAGE \\\ --
 ```lua
-local control = loadstring(game:HttpGet("https://raw.githubusercontent.com/jj123llol/CloudEditCameraCoordinateFrame/refs/heads/main/src.lua", true))()
+local mod = loadstring(game:HttpGet("https://raw.githubusercontent.com/jj123llol/CloudEditCameraCoordinateFrame/refs/heads/main/src.lua", true))()
 
--- listen for messages on channel 1
-control.Listen(1, function(num1, num2) -- make sure to include num1 and num2, u can rename them to other names if u want
-    print("got message:", num1, num2)
+-- start listening to channel
+local channel = mod.Listen(1)
+
+-- add functions to channel
+local func = channel.AddFunction(function(num1, num2)
+  print(num1, num2)
 end)
 
--- send messages
-control.Send(1, 6767, 80085)
+-- send message
+channel.Send(number1, number2)
+
+-- stopping one function in the channel
+func.Disconnect()
+
+-- stopping entire listening, disconnects all functions currently in the channel
+channel.Unlisten()
 ```
     
 # -- // WHY I MADE THIS \\\ --
