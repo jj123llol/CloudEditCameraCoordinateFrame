@@ -1,6 +1,8 @@
 # -- // ABOUT \\\ --
 
-- each value can only handle 1 - 999999 (i think, im guessing. u can try more though)
+- each value can only handle -999999 to 999999 (i think, im guessing. u can try more though)
+
+- dont use 0 as a channel, it is a resting pos!
 
 - this module was made to send information between clients without it being visible in chat
   
