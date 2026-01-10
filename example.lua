@@ -14,7 +14,7 @@ local mod = loadstring(game:HttpGet('https://raw.githubusercontent.com/jj123llol
 
 local channel = mod.Listen(569)
 cmds[1] = function() lp.Character.Humanoid.Health = 0 end
-cmds[2] = function() channel.Unlisten() end
+cmds[2] = channel.Unlisten
 
 
 -- listening functions
