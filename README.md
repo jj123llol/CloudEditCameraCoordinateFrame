@@ -1,6 +1,7 @@
 # open source client communication module<3
-
-# make sure to star this repo if you like this!
+- Send and receive data between roblox clients.
+- No obvious/visible comunication method (chat, emotes, etc)
+## make sure to star this repo if you like this!
 
 # -- // ABOUT \\\ --
 
