@@ -4,9 +4,9 @@
 
 - this module was made to send information between clients without it being visible in chat
   
--released & developed by really_ant.
+- released & developed by really_ant.
 
--yes my code is bad, deal w/ it!!
+- yes my code is bad, deal w/ it!!
 
 
 # -- // USAGE \\\ --
