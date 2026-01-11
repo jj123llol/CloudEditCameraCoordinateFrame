@@ -58,12 +58,12 @@ end)
 channel.SendString("Hello From twnvy!") -- this string will be split up and converted to numbers, each packet will be sent by its self.
 ```
 
-## explanations 3/making connections with a player.
+## explanations 3/finding a channel a specific user cant access..
 ```lua
 local listener = loadstring(game:HttpGet('https://raw.githubusercontent.com/jj123llol/CloudEditCameraCoordinateFrame/refs/heads/main/src.lua', true))()
 local targets_Channel = listener.GetRestChannel(target plr instance)
 local channel = listener.Listen(targets_Channel)
-channel.SendString("Hi")
+channel.SendString("hidden from the target")
 ```
     
 # -- // WHY I MADE THIS \\\ --
