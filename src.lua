@@ -8,7 +8,7 @@ local mod, listening, waiting, method = {}, {}, tick(), 1
 local plrs = game:GetService("Players")
 lp = plrs.LocalPlayer
 
--- can u even use control :sob:
+-- can u even use ts :sob:
 local passed = pcall(function()
 	sethiddenproperty(lp, "CloudEditCameraCoordinateFrame", CFrame.new(0, 999, 999))
 end)
@@ -24,11 +24,11 @@ if not passed then
 end
 
 if not passed and not passed1 then
-	print("control not supported, cant setproperty")
+	print("Not supported, cant setproperty")
 	print("Error:", theerror)
 	return
 else
-	print("control part1 Supported")
+	print("part1 Supported")
 	print("using method:", method)
 end
 
@@ -39,7 +39,7 @@ local passed2, theerror = pcall(function()
 end)
 
 if not passed2 then
-	print("control not supported, can't readproperty")
+	print("Not supported, can't readproperty")
 	print("Error:", theerror)
 	return
 else
