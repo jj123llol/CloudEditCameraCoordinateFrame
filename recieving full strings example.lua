@@ -1,7 +1,7 @@
 --[[
 
     THIS IS JUST A CONCEPT.
-    
+
 ]]
 
 local listener = loadstring(game:HttpGet('https://raw.githubusercontent.com/jj123llol/CloudEditCameraCoordinateFrame/refs/heads/main/src.lua', true))()
@@ -18,7 +18,7 @@ channel.AddFunction(function(Sender, num1, num2)
         local deserialized = listener.DecodePacket(num1)
         rid = num2
         if num2 == 0 then
-            communication(Sender, dString)
+            communication(Sender, dString .. deserialized)
             dString = ""
         else
             dString = dString .. deserialized
