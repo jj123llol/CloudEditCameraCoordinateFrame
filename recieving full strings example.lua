@@ -19,6 +19,7 @@ channel.AddFunction(function(Sender, num1, num2)
         rid = num2
         if num2 == 0 then -- 0 signals the last packet in the message
             communication(Sender, dString .. deserialized)
+            rid = -1 --incase they send a message thats one packet long next time
             dString = ""
         else
             dString = dString .. deserialized
