@@ -209,6 +209,14 @@ mod['RestChannel'] = function(channel : number, optional1: number, optional2: nu
     set(CFrame.new(channel, optional1, optional2))
 end
 
+mod["DecodePacket"] = function(packet: number)
+    return DeserializeChatFragment(packet)
+end
+
+mod["GetRestChannel"] = function(plr: Player)
+    return gethiddenproperty(plr, "CloudEditCameraCoordinateFrame").X
+end
+
 mod['Listen'] = function(channel : number)
     if not listening[channel] then
         listening[channel] = {}
@@ -245,10 +253,6 @@ mod['Listen'] = function(channel : number)
             task.wait(0.1)
         end
 	end
-
-    listenmod["DecodePacket"] = function(packet: number)
-        return DeserializeChatFragment(packet)
-    end
     return listenmod
 end
 
