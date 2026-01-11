@@ -57,9 +57,9 @@ local function set(cf : CFrame)
 	end
 end
 
-mod['RestChannel'] = function(channel : number, option1: number, option2: number)
-    option1, option2 = option1 or 0, option2 or 0
-    set(CFrame.new(channel, option1, option2))
+mod['RestChannel'] = function(channel : number, optional1: number, optional2: number)
+    optional1, optional2 = optional1 or 0, optional2 or 0
+    set(CFrame.new(channel, optional1, optional2))
 end
 
 mod['Listen'] = function(channel : number)
