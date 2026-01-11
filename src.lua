@@ -252,7 +252,7 @@ mod['Listen'] = function(channel : number)
 	listenmod["SendString"] = function(msg: string)
         local Serialized = SerializeChatMessage(msg)
         for i,v in pairs(Serialized) do
-            local packetnum = i == Serialized.length-1 and 0 or math.random(1,10000)
+            local packetnum = i == #Serialized -1 and 0 or math.random(1,10000)
             listenmod.Send(v, packetnum)
             task.wait(0.1)
         end
