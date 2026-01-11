@@ -1,9 +1,12 @@
 --- set up vars.
+type Callback = () -> ()
+type sethiddenproperty = (Instance, string, any) -> ()
+type setscriptable = (Instance, string, boolean) -> ()
+type gethiddenproperty  = (Instance, string) -> (any)
 
 local mod, listening, waiting, method = {}, {}, tick(), 1
 local plrs = game:GetService("Players")
 lp = plrs.LocalPlayer
-
 
 -- can u even use control :sob:
 local passed = pcall(function()
@@ -54,8 +57,9 @@ local function set(cf : CFrame)
 	end
 end
 
-mod['RestChannel'] = function(channel : number)
-   set(CFrame.new(channel, 0, 0))
+mod['RestChannel'] = function(channel : number, option1: number, option2: number)
+    option1, option2 = option1 or 0, option2 or 0
+    set(CFrame.new(channel, option1, option2))
 end
 
 mod['Listen'] = function(channel : number)
@@ -68,7 +72,7 @@ mod['Listen'] = function(channel : number)
         table.remove(listening, channel)
     end
 
-    listenmod['AddFunction'] = function(func : func)
+    listenmod['AddFunction'] = function(func : Callback)
         local funcmod = {}
         table.insert(listening[channel], func)
 
