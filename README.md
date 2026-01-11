@@ -13,9 +13,6 @@
 
 - yes my code is bad, deal w/ it!!
 
-- Dont listen to the channel you set as resting! the default resting is 0
-
-
 # -- // USAGE \\\ --
 
 ## explanations
