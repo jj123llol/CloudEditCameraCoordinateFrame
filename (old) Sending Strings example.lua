@@ -1,5 +1,7 @@
 --[[
 Shoutout the homie [twnvy @ Surplus Softworks] for this code example. U a real one :fire:
+
+check explanations 2/sending strings of the read me file for an updated version!
 ]]
 (function(fkstring)
     local fkstring = fkstring or "Enter yo message here"
