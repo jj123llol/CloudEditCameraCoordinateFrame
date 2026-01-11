@@ -50,12 +50,20 @@ local channel = listener.Listen(1)
 local rid = -1 -- we will use this to make sure strings dont get sent twice.
 local func = channel.AddFunction(function(Sender, num1, num2)
     if not (rid == num2) then -- make sure its not the same packet, avoids dupes
-        print(Sender.Name, channel.DecodePacket(num1)) -- turns the numbers back into a string
+        print(Sender.Name, listener.DecodePacket(num1)) -- turns the numbers back into a string
         rid = num2
     end
 end)
 
 channel.SendString("Hello From twnvy!") -- this string will be split up and converted to numbers, each packet will be sent by its self.
+```
+
+## explanations 3/making connections with a player.
+```lua
+local listener = loadstring(game:HttpGet('https://raw.githubusercontent.com/jj123llol/CloudEditCameraCoordinateFrame/refs/heads/main/src.lua', true))()
+local targets_Channel = listener.GetRestChannel(target plr instance)
+local channel = listener.Listen(targets_Channel)
+channel.SendString("Hi")
 ```
     
 # -- // WHY I MADE THIS \\\ --
