@@ -7,7 +7,7 @@ type sethiddenproperty = (Instance, string, any) -> ()
 type setscriptable = (Instance, string, boolean) -> ()
 type gethiddenproperty  = (Instance, string) -> (any)
 
-local mod, listening, waiting, method = {}, {}, tick(), 1
+local mod, listening, waiting, method, resting = {}, {}, tick(), 1, 0
 local plrs = game:GetService("Players")
 lp = plrs.LocalPlayer
 
@@ -205,7 +205,9 @@ local function set(cf : CFrame)
 end
 
 mod['RestChannel'] = function(channel : number, optional1: number, optional2: number)
-    optional1, optional2 = optional1 or 0, optional2 or 0
+    channel, optional1, optional2 = channel or 0, optional1 or 0, optional2 or 0
+    if listening[channel] then error("Cant set resting channel to a channel you are listening to!") end
+    resting = channel
     set(CFrame.new(channel, optional1, optional2))
 end
 
@@ -214,10 +216,11 @@ mod["DecodePacket"] = function(packet: number)
 end
 
 mod["GetRestChannel"] = function(plr: Player)
-    return gethiddenproperty(plr, "CloudEditCameraCoordinateFrame").X
+    return gethiddenproperty(plr, "CloudEditCameraCoordinateFrame").X -- if they send a message into a channel right at the same time this will break..
 end
 
 mod['Listen'] = function(channel : number)
+    if channel == resting then error("Cant listen to resting channel!") end
     if not listening[channel] then
         listening[channel] = {}
     end
