@@ -6,7 +6,9 @@ type Callback = () -> ()
 type sethiddenproperty = (Instance, string, any) -> ()
 type setscriptable = (Instance, string, boolean) -> ()
 type gethiddenproperty  = (Instance, string) -> (any)
+if CloudEditCameraCoordinateFrameSocket then error("CloudEditCameraCoordinateFrameSocket Already running!") end
 
+getgenv().CloudEditCameraCoordinateFrameSocket = true
 local mod, listening, waiting, method, resting = {}, {}, tick(), 1, 0
 local plrs = game:GetService("Players")
 lp = plrs.LocalPlayer
