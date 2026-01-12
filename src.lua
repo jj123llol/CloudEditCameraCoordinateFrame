@@ -37,20 +37,6 @@ else
 	print("using method:", method)
 end
 
-local passed2, theerror = pcall(function()
-	if gethiddenproperty(lp, "CloudEditCameraCoordinateFrame") ~= CFrame.new(0, 999, 999) then
-		error("failed property")
-	end
-end)
-
-if not passed2 then
-	print("Not supported, can't readproperty")
-	print("Error:", theerror)
-	return nil
-else
-	print("Supported")
-end
-
 local mappings = {
     ["a"] = 11,
     ["b"] = 12,
@@ -198,7 +184,8 @@ end
 
 -- module functions
 
-local function set(cf : CFrame)
+mod["cloudcf"] = {}
+mod.cloudcf["set"] = function(cf : CFrame)
 	if method == 1 then
 		sethiddenproperty(lp, "CloudEditCameraCoordinateFrame", cf)
     elseif method == 2 then
@@ -206,11 +193,19 @@ local function set(cf : CFrame)
 	end
 end
 
+mod.cloudcf["get"] = function(plr : Player)
+    plr = plr or lp
+	if method == 1 then
+		return gethiddenproperty(plr, "CloudEditCameraCoordinateFrame")
+    end
+	return plr.CloudEditCameraCoordinateFrame
+end
+
 mod['RestChannel'] = function(channel : number, optional1: number, optional2: number)
     channel, optional1, optional2 = channel or 0, optional1 or 0, optional2 or 0
     if listening[channel] then error("Cant set resting channel to a channel you are listening to!") end
     resting = channel
-    set(CFrame.new(channel, optional1, optional2))
+    mod.cloudcf["set"](CFrame.new(channel, optional1, optional2))
 end
 
 mod["DecodePacket"] = function(packet: number)
@@ -218,7 +213,7 @@ mod["DecodePacket"] = function(packet: number)
 end
 
 mod["GetRestChannel"] = function(plr: Player)
-    return gethiddenproperty(plr, "CloudEditCameraCoordinateFrame").X -- if they send a message into a channel right at the same time this will break..
+    return mod["cloudcf"](plr).X -- if they send a message into a channel right at the same time this will break..
 end
 
 mod['Listen'] = function(channel : number)
@@ -244,11 +239,11 @@ mod['Listen'] = function(channel : number)
 
     listenmod["Send"] = function(num1 : number, num2 : number)
 		num1, num2 = num1 or 30, num2 or 30
-        local og = gethiddenproperty(lp, "CloudEditCameraCoordinateFrame")
+        local og = mod["cloudcf"](lp)
         local cf = CFrame.new(channel, num1, num2)
-        set(cf)
+        mod.cloudcf["set"](cf)
         task.wait(.15)
-        set(og)
+        mod.cloudcf["set"](og)
     end
 
 	listenmod["SendString"] = function(msg: string)
@@ -266,7 +261,7 @@ end
 game:GetService("RunService").RenderStepped:Connect(function()
 	if (tick() - waiting) < .1 then return end
 	for _, plr in pairs(plrs:GetPlayers()) do
-		local data = gethiddenproperty(plr, "CloudEditCameraCoordinateFrame")
+		local data = mod["cloudcf"](plr)
         if listening[data.X] then
             for _, func in pairs(listening[data.X]) do
                 func(plr, data.Y, data.Z)
