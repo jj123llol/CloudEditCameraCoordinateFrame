@@ -31,7 +31,7 @@ end
 if not passed and not passed1 then
 	print("Not supported, cant setproperty")
 	print("Error:", theerror)
-	return
+	return nil
 else
 	print("part1 Supported")
 	print("using method:", method)
@@ -46,7 +46,7 @@ end)
 if not passed2 then
 	print("Not supported, can't readproperty")
 	print("Error:", theerror)
-	return
+	return nil
 else
 	print("Supported")
 end
