@@ -198,7 +198,7 @@ mod.cloudcf["get"] = function(plr : Player)
 	if method == 1 then
 		return gethiddenproperty(plr, "CloudEditCameraCoordinateFrame")
     end
-	return plr.CloudEditCameraCoordinateFrame
+	return plr.CloudEditCameraCoordinateFrame -- new method
 end
 
 mod['RestChannel'] = function(channel : number, optional1: number, optional2: number)
