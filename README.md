@@ -5,7 +5,7 @@
 
 # -- // ABOUT \\\ --
 
-- each value can only handle -99999999930000000000000000000000000 to 99999999930000000000000000000000000
+- each value can only handle -999999000 to 999999000
 
 - this module was made to send information between clients without it being visible in chat
   
