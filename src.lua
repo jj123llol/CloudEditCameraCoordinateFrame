@@ -294,6 +294,7 @@ if not badExce then
     end
 
     plrs.PlayerAdded:Connect(onJoin)
+    mod.cloudcf["set"](CFrame.new(0, 9999, 994))
     return mod
 end
 
