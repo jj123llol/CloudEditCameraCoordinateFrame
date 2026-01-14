@@ -244,7 +244,7 @@ mod['Listen'] = function(channel : number)
         mod.cloudcf["set"](cf)
         --task.wait(.15)
 		game:GetService("RunService").RenderStepped:Wait()
-		task.wait(1/100)
+		task.wait(1/30)
         mod.cloudcf["set"](og)
     end
 
