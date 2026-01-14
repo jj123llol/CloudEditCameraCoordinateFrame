@@ -264,7 +264,7 @@ end
 -- checking for messages, thanks for the updated one nathan
 function onJoin(plr)
     plr.Changed:Connect(function(p)
-        print(p)
+        setscriptable(plr, "CloudEditCameraCoordinateFrame", true)
         if p == "CloudEditCameraCoordinateFrame" then
 		    local data = mod["cloudcf"]['get'](plr)
             print(data, plr)
