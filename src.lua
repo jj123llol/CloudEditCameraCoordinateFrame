@@ -270,7 +270,7 @@ mod.cloudcf["set"](CFrame.new(0, 9999, 999))
 lp.Character.Humanoid.Health = 0
 
 repeat task.wait() until badExce ~= nil
-print("Exectuor Good? "..badExce)
+print("Exectuor Bad? "..badExce)
 
 if not badExce then
     function onJoin(plr)
