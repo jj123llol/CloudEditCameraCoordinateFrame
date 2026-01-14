@@ -213,7 +213,7 @@ mod["DecodePacket"] = function(packet: number)
 end
 
 mod["GetRestChannel"] = function(plr: Player)
-    return mod["cloudcf"](plr).X -- if they send a message into a channel right at the same time this will break..
+    return mod["cloudcf"]["get"](plr).X -- if they send a message into a channel right at the same time this will break..
 end
 
 mod['Listen'] = function(channel : number)
@@ -239,7 +239,7 @@ mod['Listen'] = function(channel : number)
 
     listenmod["Send"] = function(num1 : number, num2 : number)
 		num1, num2 = num1 or 30, num2 or 30
-        local og = mod["cloudcf"](lp)
+        local og = mod["cloudcf"]["get"](lp)
         local cf = CFrame.new(channel, num1, num2)
         mod.cloudcf["set"](cf)
         task.wait(.15)
@@ -261,7 +261,7 @@ end
 game:GetService("RunService").RenderStepped:Connect(function()
 	if (tick() - waiting) < .1 then return end
 	for _, plr in pairs(plrs:GetPlayers()) do
-		local data = mod["cloudcf"](plr)
+		local data = mod["cloudcf"]["get"](plr)
         if listening[data.X] then
             for _, func in pairs(listening[data.X]) do
                 func(plr, data.Y, data.Z)
