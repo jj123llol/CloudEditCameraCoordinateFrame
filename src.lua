@@ -202,19 +202,12 @@ mod.cloudcf["get"] = function(plr : Player)
 	return plr.CloudEditCameraCoordinateFrame -- new method
 end
 
-mod['RestChannel'] = function(channel : number, optional1: number, optional2: number)
-    channel, optional1, optional2 = channel or 0, optional1 or 0, optional2 or 0
-    if listening[channel] then error("Cant set resting channel to a channel you are listening to!") end
-    resting = channel
-    mod.cloudcf["set"](CFrame.new(channel, optional1, optional2))
-end
-
 mod["DecodePacket"] = function(packet: number)
     return DeserializeChatFragment(packet)
 end
 
 mod["GetRestChannel"] = function(plr: Player)
-    return mod["cloudcf"]["get"](plr).X -- if they send a message into a channel right at the same time this will break..
+    return 0
 end
 
 mod['Listen'] = function(channel : number)
@@ -259,26 +252,58 @@ mod['Listen'] = function(channel : number)
 end
 
 -- checking for messages, thanks for the updated one nathan
-function onJoin(plr)
-    setscriptable(plr, "CloudEditCameraCoordinateFrame", true)
-    plr.Changed:Connect(function(p)
-        if p == "CloudEditCameraCoordinateFrame" then
-		    local data = mod["cloudcf"]['get'](plr)
-            print(data, plr)
-            if listening[data.X] then
-                for _, func in pairs(listening[data.X]) do
-                    func(plr, data.Y, data.Z)
+
+
+local badExce = false;
+local change
+change = lp.Changed:Connect(function(p)
+    if p == "CloudEditCameraCoordinateFrame" then
+        badExce = false
+        change:Disconnect()
+
+    else
+        badExce = true
+        change:Disconnect()
+    end
+end)
+mod.cloudcf["set"](CFrame.new(0, 9999, 999))
+lp.Character.Humanoid.Health = 0
+
+if not badExce then
+    function onJoin(plr)
+        setscriptable(plr, "CloudEditCameraCoordinateFrame", true)
+        plr.Changed:Connect(function(p)
+            if p == "CloudEditCameraCoordinateFrame" then
+		        local data = mod["cloudcf"]['get'](plr)
+                print(data, plr)
+                if listening[data.X] then
+                    for _, func in pairs(listening[data.X]) do
+                        func(plr, data.Y, data.Z)
+                    end
                 end
             end
-        end
-    end)
-end 
+        end)
+    end 
+    for _, plr in pairs(plrs:GetPlayers()) do
+        onJoin(plr)
+    end
 
-for _, plr in pairs(plrs:GetPlayers()) do
-    onJoin(plr)
+    plrs.PlayerAdded:Connect(onJoin)
 end
 
-plrs.PlayerAdded:Connect(onJoin)
+if not badExce then return mod end
+game:GetService("RunService").RenderStepped:Connect(function()
+	if (tick() - waiting) < .7 then return end
+	for _, plr in pairs(plrs:GetPlayers()) do
+		local data = mod["cloudcf"]["get"](plr)
+        if listening[data.X] then
+            for _, func in pairs(listening[data.X]) do
+                func(plr, data.Y, data.Z)
+            end
+        end
+	end
+    waiting = tick()
+end)
 
 -- enjoy<3
 
