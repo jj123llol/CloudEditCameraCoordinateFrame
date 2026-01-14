@@ -263,7 +263,7 @@ end
 
 -- checking for messages
 game:GetService("RunService").RenderStepped:Connect(function()
-	if (tick() - waiting) < .1 then return end
+	if (tick() - waiting) < .7 then return end
 	for _, plr in pairs(plrs:GetPlayers()) do
 		local data = mod["cloudcf"]["get"](plr)
         if listening[data.X] then
