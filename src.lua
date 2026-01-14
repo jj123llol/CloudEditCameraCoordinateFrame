@@ -255,7 +255,7 @@ mod['Listen'] = function(channel : number)
         for i,v in pairs(Serialized) do
             local packetnum = i == #Serialized and 0 or math.random(1,10000)
             listenmod.Send(v, packetnum)
-            --task.wait(0.1)
+            task.wait(0.1)
         end
 	end
     return listenmod
