@@ -261,6 +261,7 @@ end
 
 -- checking for messages, thanks for the updated one nathan
 function onJoin(plr)
+    setscriptable(plr, "CloudEditCameraCoordinateFrame", true)
     plr.Changed:Connect(function(p)
         print(p)
         setscriptable(plr, "CloudEditCameraCoordinateFrame", true)
@@ -278,7 +279,6 @@ function onJoin(plr)
 end 
 
 for _, plr in pairs(plrs:GetPlayers()) do
-    print(plr.Name)
     onJoin(plr)
 end
 
