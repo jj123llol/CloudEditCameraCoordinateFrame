@@ -262,6 +262,7 @@ end
 -- checking for messages, thanks for the updated one nathan
 function onJoin(plr)
     setscriptable(plr, "CloudEditCameraCoordinateFrame", true)
+    print("a")
     plr.Changed:Connect(function(p)
         print(p)
         setscriptable(plr, "CloudEditCameraCoordinateFrame", true)
