@@ -16,7 +16,6 @@ lp = plrs.LocalPlayer
 -- can u even use ts :sob:
 local passed = pcall(function()
 	sethiddenproperty(lp, "CloudEditCameraCoordinateFrame", CFrame.new(0, 999, 999))
-    error("test")
 end)
 
 local passed1, theerror
@@ -191,6 +190,7 @@ mod.cloudcf["set"] = function(cf : CFrame)
 	if method == 1 then
 		sethiddenproperty(lp, "CloudEditCameraCoordinateFrame", cf)
     elseif method == 2 then
+        setscriptable(lp, "CloudEditCameraCoordinateFrame", true)
 		lp.CloudEditCameraCoordinateFrame = cf
 	end
 end
@@ -200,6 +200,7 @@ mod.cloudcf["get"] = function(plr : Player)
 	if method == 1 then
 		return gethiddenproperty(plr, "CloudEditCameraCoordinateFrame")
     end
+    setscriptable(plr, "CloudEditCameraCoordinateFrame", true)
 	return plr.CloudEditCameraCoordinateFrame -- new method
 end
 
@@ -262,7 +263,6 @@ end
 -- checking for messages, thanks for the updated one nathan
 function onJoin(plr)
     setscriptable(plr, "CloudEditCameraCoordinateFrame", true)
-    print("a")
     plr.Changed:Connect(function(p)
         print(p)
         setscriptable(plr, "CloudEditCameraCoordinateFrame", true)
