@@ -9,7 +9,7 @@ type gethiddenproperty  = (Instance, string) -> (any)
 if CloudEditCameraCoordinateFrameSocket then error("CloudEditCameraCoordinateFrameSocket Already running!") end
 
 getgenv().CloudEditCameraCoordinateFrameSocket = true
-local mod, listening, waiting, method, resting = {}, {}, tick(), 1, 0
+local mod, listening, waiting, method, resting, delay = {}, {}, tick(), 1, 0, .2
 local plrs = game:GetService("Players")
 lp = plrs.LocalPlayer
 
@@ -216,6 +216,10 @@ mod["GetRestChannel"] = function(plr: Player)
     return mod["cloudcf"]["get"](plr).X -- if they send a message into a channel right at the same time this will break..
 end
 
+mod["SetDelay"] = function(del: number)
+	delay = del
+end
+
 mod['Listen'] = function(channel : number)
     if channel == resting then error("Cant listen to resting channel!") end
     if not listening[channel] then
@@ -242,9 +246,7 @@ mod['Listen'] = function(channel : number)
         local og = mod["cloudcf"]["get"](lp)
         local cf = CFrame.new(channel, num1, num2)
         mod.cloudcf["set"](cf)
-        --task.wait(.15)
-		game:GetService("RunService").Heartbeat:Wait()
-		task.wait()
+		task.wait(delay)
         mod.cloudcf["set"](og)
     end
 
@@ -261,7 +263,7 @@ end
 
 -- checking for messages
 game:GetService("RunService").RenderStepped:Connect(function()
-	--if (tick() - waiting) < .1 then return end
+	if (tick() - waiting) < .1 then return end
 	for _, plr in pairs(plrs:GetPlayers()) do
 		local data = mod["cloudcf"]["get"](plr)
         if listening[data.X] then
