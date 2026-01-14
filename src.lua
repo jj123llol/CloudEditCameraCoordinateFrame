@@ -261,27 +261,20 @@ mod['Listen'] = function(channel : number)
     return listenmod
 end
 
--- checking for messages, thanks for the updated one nathan
-function onJoin(plr)
-    plr.Changed:Connect(function(p)
-        if p == "CloudEditCameraCoordinateFrame" then
-		    local data = mod["cloudcf"](plr)
-            if listening[data.X] then
-                for _, func in pairs(listening[data.X]) do
-                    func(plr, data.Y, data.Z)
-                end
+-- checking for messages
+game:GetService("RunService").RenderStepped:Connect(function()
+	if (tick() - waiting) < .1 then return end
+	for _, plr in pairs(plrs:GetPlayers()) do
+		local data = mod["cloudcf"](plr)
+        if listening[data.X] then
+            for _, func in pairs(listening[data.X]) do
+                func(plr, data.Y, data.Z)
             end
         end
-    end)
-end 
+	end
+    waiting = tick()
+end)
 
-for _, plr in pairs(plrs:GetPlayers()) do
-    if plr ~= lp then
-        onJoin(plr)
-    end
-end
-
-plrs.PlayerAdded:Connect(onJoin)
 
 -- enjoy<3
 
