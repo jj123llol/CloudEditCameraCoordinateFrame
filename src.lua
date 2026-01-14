@@ -254,28 +254,22 @@ end
 -- checking for messages, thanks for the updated one nathan
 
 
-local badExce = nil;
+local badExce = false;
 local change
 change = lp.Changed:Connect(function(p)
     if p == "CloudEditCameraCoordinateFrame" then
         badExce = false
         change:Disconnect()
-
-    else
-        badExce = true
-        change:Disconnect()
     end
 end)
 mod.cloudcf["set"](CFrame.new(0, 9999, 999))
-task.wait(.3)
-lp.Character.Humanoid.Health = 0
-
-repeat task.wait() until badExce ~= nil
+local start = tick()
+repeat task.wait() until badExce ~= false or tick() - start > 1
 print("Exectuor Bad? "..tostring(badExce))
 
 if not badExce then
     function onJoin(plrx)
-        --setscriptable(plrx, "CloudEditCameraCoordinateFrame", true)
+        --setscriptable(plrx, "CloudEditCameraCoordinateFrame", true) --why tf was this breaking it
         plrx.Changed:Connect(function(p)
             print(plrx, p)
             if p == "CloudEditCameraCoordinateFrame" then
@@ -294,7 +288,6 @@ if not badExce then
     end
 
     plrs.PlayerAdded:Connect(onJoin)
-    mod.cloudcf["set"](CFrame.new(0, 9999, 994))
     return mod
 end
 
