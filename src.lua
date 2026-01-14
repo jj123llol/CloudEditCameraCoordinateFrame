@@ -262,7 +262,6 @@ end
 function onJoin(plr)
     setscriptable(plr, "CloudEditCameraCoordinateFrame", true)
     plr.Changed:Connect(function(p)
-        setscriptable(plr, "CloudEditCameraCoordinateFrame", true)
         if p == "CloudEditCameraCoordinateFrame" then
 		    local data = mod["cloudcf"]['get'](plr)
             print(data, plr)
