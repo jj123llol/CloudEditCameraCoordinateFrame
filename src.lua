@@ -26,6 +26,7 @@ if not passed then
 	passed1, theerror = pcall(function()
 		setscriptable(lp, "CloudEditCameraCoordinateFrame", true)
 		lp.CloudEditCameraCoordinateFrame = CFrame.new(0, 999, 999)
+        if lp.CloudEditCameraCoordinateFrame ~= CFrame.new(0, 999, 999) then error("failed to read") end
 	end)
 end
 
