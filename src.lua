@@ -269,10 +269,10 @@ print("Exectuor Bad? "..tostring(badExce))
 
 if not badExce then
     function onJoin(plrx)
-        local passed = pcall(function()
-            plrx.CloudEditCameraCoordinateFrame
+        local passed,msg = pcall(function()
+            return plrx.CloudEditCameraCoordinateFrame
         end)
-        if not passed then
+        if not passed or msg == nil then
             setscriptable(plrx, "CloudEditCameraCoordinateFrame", true) --why tf was this breaking it
         end
         plrx.Changed:Connect(function(p)
