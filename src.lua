@@ -246,7 +246,7 @@ mod['Listen'] = function(channel : number)
         local og = mod["cloudcf"]["get"](lp)
         local cf = CFrame.new(channel, num1, num2)
         mod.cloudcf["set"](cf)
-		task.wait(.15)
+		task.wait(.13)
         mod.cloudcf["set"](og)
     end
 
