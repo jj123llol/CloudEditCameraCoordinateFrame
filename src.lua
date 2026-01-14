@@ -265,7 +265,7 @@ end
 function onJoin(plr)
     plr.Changed:Connect(function(p)
         if p == "CloudEditCameraCoordinateFrame" then
-		    local data = mod["cloudcf"](plr)
+		    local data = mod["cloudcf"]['get'](plr)
             if listening[data.X] then
                 for _, func in pairs(listening[data.X]) do
                     func(plr, data.Y, data.Z)
