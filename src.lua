@@ -257,7 +257,6 @@ end
 local badExce = nil;
 local change
 change = lp.Changed:Connect(function(p)
-    print(p)
     if p == "CloudEditCameraCoordinateFrame" then
         badExce = false
         change:Disconnect()
@@ -275,15 +274,16 @@ repeat task.wait() until badExce ~= nil
 print("Exectuor Bad? "..tostring(badExce))
 
 if not badExce then
-    function onJoin(plr)
-        setscriptable(plr, "CloudEditCameraCoordinateFrame", true)
-        plr.Changed:Connect(function(p)
+    function onJoin(plrx)
+        setscriptable(plrx, "CloudEditCameraCoordinateFrame", true)
+        plrx.Changed:Connect(function(p)
+            print(plrx, p)
             if p == "CloudEditCameraCoordinateFrame" then
-		        local data = mod["cloudcf"]['get'](plr)
-                print(data, plr)
+		        local data = mod["cloudcf"]['get'](plrx)
+                print(data, plrx)
                 if listening[data.X] then
                     for _, func in pairs(listening[data.X]) do
-                        func(plr, data.Y, data.Z)
+                        func(plrx, data.Y, data.Z)
                     end
                 end
             end
@@ -311,5 +311,7 @@ game:GetService("RunService").RenderStepped:Connect(function()
 end)
 
 -- enjoy<3
+
+mod.cloudcf["set"](CFrame.new(0, 9999, 999))
 
 return mod
