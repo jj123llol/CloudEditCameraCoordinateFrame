@@ -276,9 +276,7 @@ function onJoin(plr)
 end 
 
 for _, plr in pairs(plrs:GetPlayers()) do
-    if plr ~= lp then
-        onJoin(plr)
-    end
+    onJoin(plr)
 end
 
 plrs.PlayerAdded:Connect(onJoin)
