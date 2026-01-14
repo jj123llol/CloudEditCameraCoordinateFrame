@@ -16,6 +16,7 @@ lp = plrs.LocalPlayer
 -- can u even use ts :sob:
 local passed = pcall(function()
 	sethiddenproperty(lp, "CloudEditCameraCoordinateFrame", CFrame.new(0, 999, 999))
+    error("test")
 end)
 
 local passed1, theerror
