@@ -246,7 +246,7 @@ mod['Listen'] = function(channel : number)
         local og = mod["cloudcf"]["get"](lp)
         local cf = CFrame.new(channel, num1, num2)
         mod.cloudcf["set"](cf)
-		task.wait(.3)
+		task.wait(1)
         mod.cloudcf["set"](og)
     end
 
@@ -255,7 +255,7 @@ mod['Listen'] = function(channel : number)
         for i,v in pairs(Serialized) do
             local packetnum = i == #Serialized and 0 or math.random(1,10000)
             listenmod.Send(v, packetnum)
-            task.wait(0.3)
+            task.wait(1)
         end
 	end
     return listenmod
@@ -264,8 +264,10 @@ end
 -- checking for messages, thanks for the updated one nathan
 function onJoin(plr)
     plr.Changed:Connect(function(p)
+        print(p)
         if p == "CloudEditCameraCoordinateFrame" then
 		    local data = mod["cloudcf"]['get'](plr)
+            print(data, plr)
             if listening[data.X] then
                 for _, func in pairs(listening[data.X]) do
                     func(plr, data.Y, data.Z)
