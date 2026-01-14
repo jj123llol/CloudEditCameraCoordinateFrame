@@ -269,9 +269,10 @@ print("Exectuor Bad? "..tostring(badExce))
 
 if not badExce then
     function onJoin(plrx)
-        --setscriptable(plrx, "CloudEditCameraCoordinateFrame", true) --why tf was this breaking it
+        if not isscriptable(plrx, "CloudEditCameraCoordinateFrame") then
+            setscriptable(plrx, "CloudEditCameraCoordinateFrame", true) --why tf was this breaking it
+        end
         plrx.Changed:Connect(function(p)
-            print(plrx, p)
             if p == "CloudEditCameraCoordinateFrame" then
 		        local data = mod["cloudcf"]['get'](plrx)
                 print(data, plrx)
