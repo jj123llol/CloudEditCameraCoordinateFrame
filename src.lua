@@ -242,7 +242,7 @@ mod['Listen'] = function(channel : number)
         local og = mod["cloudcf"]["get"](lp)
         local cf = CFrame.new(channel, num1, num2)
         mod.cloudcf["set"](cf)
-        task.wait(.15)
+        --task.wait(.15)
         mod.cloudcf["set"](og)
     end
 
@@ -251,7 +251,7 @@ mod['Listen'] = function(channel : number)
         for i,v in pairs(Serialized) do
             local packetnum = i == #Serialized and 0 or math.random(1,10000)
             listenmod.Send(v, packetnum)
-            task.wait(0.1)
+            --task.wait(0.1)
         end
 	end
     return listenmod
@@ -259,7 +259,7 @@ end
 
 -- checking for messages
 game:GetService("RunService").RenderStepped:Connect(function()
-	if (tick() - waiting) < .1 then return end
+	--if (tick() - waiting) < .1 then return end
 	for _, plr in pairs(plrs:GetPlayers()) do
 		local data = mod["cloudcf"]["get"](plr)
         if listening[data.X] then
