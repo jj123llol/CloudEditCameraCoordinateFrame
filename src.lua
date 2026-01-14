@@ -9,7 +9,7 @@ type gethiddenproperty  = (Instance, string) -> (any)
 if CloudEditCameraCoordinateFrameSocket then error("CloudEditCameraCoordinateFrameSocket Already running!") end
 
 getgenv().CloudEditCameraCoordinateFrameSocket = true
-local mod, listening, waiting, method, resting, delay = {}, {}, tick(), 1, 0, .2
+local mod, listening, waiting, method, resting, delay = {}, {}, tick(), 1, 0, .15
 local plrs = game:GetService("Players")
 lp = plrs.LocalPlayer
 
