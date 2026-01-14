@@ -254,7 +254,7 @@ end
 -- checking for messages, thanks for the updated one nathan
 
 
-local badExce = false;
+local badExce = nil;
 local change
 change = lp.Changed:Connect(function(p)
     if p == "CloudEditCameraCoordinateFrame" then
@@ -268,6 +268,9 @@ change = lp.Changed:Connect(function(p)
 end)
 mod.cloudcf["set"](CFrame.new(0, 9999, 999))
 lp.Character.Humanoid.Health = 0
+
+repeat task.wait() until badExce ~= nil
+print("Exectuor Good? "..badExce)
 
 if not badExce then
     function onJoin(plr)
