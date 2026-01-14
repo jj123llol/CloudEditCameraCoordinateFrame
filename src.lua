@@ -257,6 +257,7 @@ end
 local badExce = nil;
 local change
 change = lp.Changed:Connect(function(p)
+    print(p)
     if p == "CloudEditCameraCoordinateFrame" then
         badExce = false
         change:Disconnect()
