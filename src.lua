@@ -218,10 +218,6 @@ mod["GetRestChannel"] = function(plr: Player)
     return mod["cloudcf"]["get"](plr).X -- if they send a message into a channel right at the same time this will break..
 end
 
-mod["SetDelay"] = function(del: number)
-	delay = del
-end
-
 mod['Listen'] = function(channel : number)
     if channel == resting then error("Cant listen to resting channel!") end
     if not listening[channel] then
@@ -282,6 +278,7 @@ function onJoin(plr)
 end 
 
 for _, plr in pairs(plrs:GetPlayers()) do
+    print(plr.Name)
     onJoin(plr)
 end
 
