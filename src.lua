@@ -275,7 +275,7 @@ print("Exectuor Bad? "..tostring(badExce))
 
 if not badExce then
     function onJoin(plrx)
-        setscriptable(plrx, "CloudEditCameraCoordinateFrame", true)
+        --setscriptable(plrx, "CloudEditCameraCoordinateFrame", true)
         plrx.Changed:Connect(function(p)
             print(plrx, p)
             if p == "CloudEditCameraCoordinateFrame" then
