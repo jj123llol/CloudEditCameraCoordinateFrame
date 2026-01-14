@@ -294,9 +294,9 @@ if not badExce then
     end
 
     plrs.PlayerAdded:Connect(onJoin)
+    return mod
 end
 
-if not badExce then return mod end
 game:GetService("RunService").RenderStepped:Connect(function()
 	if (tick() - waiting) < .7 then return end
 	for _, plr in pairs(plrs:GetPlayers()) do
