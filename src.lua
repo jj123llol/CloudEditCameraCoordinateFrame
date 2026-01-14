@@ -263,6 +263,7 @@ change = lp.Changed:Connect(function(p)
     end
 end)
 setscriptable(lp, "CloudEditCameraCoordinateFrame", true)
+task.wait(.3)
 mod.cloudcf["set"](CFrame.new(0, 9999, 999))
 local start = tick()
 repeat task.wait() until badExce ~= false or tick() - start > 1
