@@ -243,8 +243,8 @@ mod['Listen'] = function(channel : number)
         local cf = CFrame.new(channel, num1, num2)
         mod.cloudcf["set"](cf)
         --task.wait(.15)
-		game:GetService("RunService").RenderStepped:Wait()
-		task.wait(1/30)
+		game:GetService("RunService").Heartbeat:Wait()
+		task.wait()
         mod.cloudcf["set"](og)
     end
 
