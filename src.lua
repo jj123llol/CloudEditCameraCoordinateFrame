@@ -245,7 +245,7 @@ mod['Listen'] = function(channel : number)
         local og = mod["cloudcf"]["get"](lp)
         local cf = CFrame.new(channel, num1, num2)
         mod.cloudcf["set"](cf)
-		task.wait(1)
+		task.wait(.1)
         mod.cloudcf["set"](og)
     end
 
@@ -254,7 +254,7 @@ mod['Listen'] = function(channel : number)
         for i,v in pairs(Serialized) do
             local packetnum = i == #Serialized and 0 or math.random(1,10000)
             listenmod.Send(v, packetnum)
-            task.wait(1)
+            --task.wait(1)
         end
 	end
     return listenmod
