@@ -275,6 +275,7 @@ if not badExce then
             return plrx.CloudEditCameraCoordinateFrame
         end)
         plrx.Changed:Connect(function(p)
+            print(p, plrx.Name)
             if p == "CloudEditCameraCoordinateFrame" then
 		        local data = mod["cloudcf"]['get'](plrx)
                 print(data, plrx)
@@ -291,7 +292,7 @@ if not badExce then
             passed, msg = pcall(function()
                 print(plrx.CloudEditCameraCoordinateFrame)
             end)
-            print(passed, msg, plrx.Name)
+            print(passed msg, plrx.Name)
         end
     end 
     for _, plr in pairs(plrs:GetPlayers()) do
