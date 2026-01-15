@@ -286,6 +286,7 @@ if not badExce then
             end
         end)
         if not passed or msg == nil then
+            print(passed, msg)
             setscriptable(plrx, "CloudEditCameraCoordinateFrame", true)
         end
     end 
