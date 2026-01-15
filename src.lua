@@ -261,6 +261,7 @@ passed = nil;passed = pcall(function()
         rah:Disconnect()
     end)
 end)
+repeat task.wait() until passed ~= nil
 badExce = passed and false or true
 print("Exectuor Bad? "..tostring(badExce))
 
