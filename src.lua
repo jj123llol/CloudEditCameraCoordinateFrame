@@ -283,7 +283,7 @@ do
         print(`CloudCFrame is supported on this executor ({executorName})`)
         badExce = false
     end, function(err)
-        print(`CloudCFrame is unsupported on this executor ({executorName})!\nError: {tostring(err or 'N/A')}`)
+        print(`CloudCFrame is unsupported on this executor ({executorName})!\nError: {tostring(err or 'N/A')}\nUsing renderstepped instead!`)
         badExce = true
     end)
 end
