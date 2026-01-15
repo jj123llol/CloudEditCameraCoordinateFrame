@@ -254,17 +254,7 @@ end
 -- checking for messages, thanks for the updated one nathan
 
 
-local badExce = false;
-local change
-change = lp.Changed:Connect(function(p)
-    if p == "CloudEditCameraCoordinateFrame" then
-        badExce = identifyexecutor():lower():find("delta") or identifyexecutor():lower():find("potassium") and true or false
-        change:Disconnect()
-    end
-end)
-mod.cloudcf["set"](CFrame.new(0, 9999, 999))
-local start = tick()
-repeat task.wait() until badExce ~= false or tick() - start > 1
+local badExce = identifyexecutor():lower():find("solara") or identifyexecutor():lower():find("velocity") and false or true;
 print("Exectuor Bad? "..tostring(badExce))
 
 if not badExce then
