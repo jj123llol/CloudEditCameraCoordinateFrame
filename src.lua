@@ -254,7 +254,8 @@ end
 -- checking for messages, thanks for the updated one nathan
 
 
-local badExce = identifyexecutor():lower():find("solara") or identifyexecutor():lower():find("velocity") and false or true;
+--local badExce = identifyexecutor():lower():find("solara") or identifyexecutor():lower():find("velocity") and false or true;
+badExce = false
 print("Exectuor Bad? "..tostring(badExce))
 
 if not badExce then
@@ -265,14 +266,12 @@ if not badExce then
         if not passed or msg == nil then
             setscriptable(plrx, "CloudEditCameraCoordinateFrame", true)
         end
-        plrx.Changed:Connect(function(p)
-            if p == "CloudEditCameraCoordinateFrame" then
-		        local data = mod["cloudcf"]['get'](plrx)
-                print(data, plrx)
-                if listening[data.X] then
-                    for _, func in pairs(listening[data.X]) do
-                        func(plrx, data.Y, data.Z)
-                    end
+        plrx.GetPropertyChangedSignal("CloudEditCameraCoordinateFrame"):Connect(function()
+		    local data = mod["cloudcf"]['get'](plrx)
+            print(data, plrx)
+            if listening[data.X] then
+                for _, func in pairs(listening[data.X]) do
+                    func(plrx, data.Y, data.Z)
                 end
             end
         end)
