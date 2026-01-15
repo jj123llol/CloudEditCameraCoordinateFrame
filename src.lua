@@ -266,7 +266,7 @@ if not badExce then
         if not passed or msg == nil then
             setscriptable(plrx, "CloudEditCameraCoordinateFrame", true)
         end
-        plrx.GetPropertyChangedSignal("CloudEditCameraCoordinateFrame"):Connect(function()
+        plrx:GetPropertyChangedSignal("CloudEditCameraCoordinateFrame"):Connect(function()
 		    local data = mod["cloudcf"]['get'](plrx)
             print(data, plrx)
             if listening[data.X] then
