@@ -256,8 +256,9 @@ end
 
 -- checking for messages, thanks for the updated one nathan
 passed = nil;passed, whyerror = pcall(function()
-    repeat task.wait() setscriptable(lp, "CloudEditCameraCoordinateFrame", true) until isscriptable(lp, "CloudEditCameraCoordinateFrame")
-    local rah; rah = lp:GetPropertyChangedSignal("CloudEditCameraCoordinateFrame"):Connect(function()
+    local plr = plrs:GetPlayers()[math.random(1, #plrs:GetPlayers())] -- we want a plr that isint the local player for testing.
+    repeat task.wait() setscriptable(plr, "CloudEditCameraCoordinateFrame", true) until isscriptable(plr, "CloudEditCameraCoordinateFrame")
+    local rah; rah = plr:GetPropertyChangedSignal("CloudEditCameraCoordinateFrame"):Connect(function()
         rah:Disconnect()
     end)
 end)
