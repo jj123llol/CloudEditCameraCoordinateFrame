@@ -292,7 +292,7 @@ if not badExce then
             passed, msg = pcall(function()
                 print(plrx.CloudEditCameraCoordinateFrame)
             end)
-            print(passed msg, plrx.Name)
+            print(passed, msg, plrx.Name)
         end
     end 
     for _, plr in pairs(plrs:GetPlayers()) do
