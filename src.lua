@@ -263,6 +263,7 @@ passed = nil;passed, whyerror = pcall(function()
 end)
 repeat task.wait() until passed ~= nil
 badExce = passed and false or true
+whyerror = whyerror or "None! yippee"
 print("Exectuor Bad? "..tostring(badExce).."\nError: "..tostring(whyerror))
 
 if not badExce then
