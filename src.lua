@@ -236,7 +236,7 @@ mod['Listen'] = function(channel : number)
         local og = mod["cloudcf"]["get"](lp)
         local cf = CFrame.new(channel, num1, num2)
         mod.cloudcf["set"](cf)
-		task.wait(.1)
+		task.wait(.15)
         mod.cloudcf["set"](og)
     end
 
@@ -245,7 +245,7 @@ mod['Listen'] = function(channel : number)
         for i,v in pairs(Serialized) do
             local packetnum = i == #Serialized and 0 or math.random(1,10000)
             listenmod.Send(v, packetnum)
-            --task.wait(1)
+            task.wait(.09)
         end
 	end
     return listenmod
@@ -258,12 +258,10 @@ local badExce = false;
 local change
 change = lp.Changed:Connect(function(p)
     if p == "CloudEditCameraCoordinateFrame" then
-        --badExce = identifyexecutor():lower():find("delta") and true or false
+        badExce = identifyexecutor():lower():find("delta") and true or false
         change:Disconnect()
     end
 end)
-setscriptable(lp, "CloudEditCameraCoordinateFrame", true)
-task.wait(5)
 mod.cloudcf["set"](CFrame.new(0, 9999, 999))
 local start = tick()
 repeat task.wait() until badExce ~= false or tick() - start > 1
@@ -287,12 +285,7 @@ if not badExce then
             end
         end)
         if not passed or msg == nil then
-            print(passed, msg, plrx.Name)
             setscriptable(plrx, "CloudEditCameraCoordinateFrame", true)
-            passed, msg = pcall(function()
-                print(plrx.CloudEditCameraCoordinateFrame)
-            end)
-            print(passed, msg, plrx.Name)
         end
     end 
     for _, plr in pairs(plrs:GetPlayers()) do
