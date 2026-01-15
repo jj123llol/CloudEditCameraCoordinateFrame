@@ -302,6 +302,4 @@ end)
 
 -- enjoy<3
 
-mod.cloudcf["set"](CFrame.new(0, 9999, 999))
-
 return mod
