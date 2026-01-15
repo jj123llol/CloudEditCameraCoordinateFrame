@@ -286,8 +286,12 @@ if not badExce then
             end
         end)
         if not passed or msg == nil then
-            print(passed, msg)
+            print(passed, msg, plrx.Name)
             setscriptable(plrx, "CloudEditCameraCoordinateFrame", true)
+            passed, msg = pcall(function()
+                print(plrx.CloudEditCameraCoordinateFrame)
+            end)
+            print(passed, msg, plrx.Name)
         end
     end 
     for _, plr in pairs(plrs:GetPlayers()) do
