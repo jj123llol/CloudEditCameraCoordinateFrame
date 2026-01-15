@@ -272,8 +272,10 @@ if not badExce then
         local passed,msg = pcall(function()
             return plrx.CloudEditCameraCoordinateFrame
         end)
+        if not passed or msg == nil then
+            setscriptable(plrx, "CloudEditCameraCoordinateFrame", true)
+        end
         plrx.Changed:Connect(function(p)
-            print(p, plrx.Name)
             if p == "CloudEditCameraCoordinateFrame" then
 		        local data = mod["cloudcf"]['get'](plrx)
                 print(data, plrx)
@@ -284,9 +286,6 @@ if not badExce then
                 end
             end
         end)
-        if not passed or msg == nil then
-            setscriptable(plrx, "CloudEditCameraCoordinateFrame", true)
-        end
     end 
     for _, plr in pairs(plrs:GetPlayers()) do
         onJoin(plr)
