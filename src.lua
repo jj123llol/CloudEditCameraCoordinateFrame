@@ -258,7 +258,7 @@ local badExce = false;
 local change
 change = lp.Changed:Connect(function(p)
     if p == "CloudEditCameraCoordinateFrame" then
-        badExce = identifyexecutor():lower():find("delta") and true or false
+        badExce = identifyexecutor():lower():find("delta") or identifyexecutor():lower():find("potassium") and true or false
         change:Disconnect()
     end
 end)
