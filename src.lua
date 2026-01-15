@@ -258,7 +258,7 @@ local badExce = false;
 local change
 change = lp.Changed:Connect(function(p)
     if p == "CloudEditCameraCoordinateFrame" then
-        badExce = identifyexecutor():lower():find("delta") and true or false
+        --badExce = identifyexecutor():lower():find("delta") and true or false
         change:Disconnect()
     end
 end)
@@ -272,13 +272,6 @@ if not badExce then
         local passed,msg = pcall(function()
             return plrx.CloudEditCameraCoordinateFrame
         end)
-        if not passed or msg == nil then
-            if not identifyexecutor():lower():find("delta") then
-                setscriptable(plrx, "CloudEditCameraCoordinateFrame", true)
-            elseif plrx.Name ~= lp.Name then
-                setscriptable(plrx, "CloudEditCameraCoordinateFrame", true)
-            end
-        end
         plrx.Changed:Connect(function(p)
             if p == "CloudEditCameraCoordinateFrame" then
 		        local data = mod["cloudcf"]['get'](plrx)
@@ -290,6 +283,9 @@ if not badExce then
                 end
             end
         end)
+        if not passed or msg == nil then
+            setscriptable(plrx, "CloudEditCameraCoordinateFrame", true)
+        end
     end 
     for _, plr in pairs(plrs:GetPlayers()) do
         onJoin(plr)
