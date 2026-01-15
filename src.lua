@@ -274,6 +274,7 @@ if not badExce then
             return plrx.CloudEditCameraCoordinateFrame
         end)
         if not passed or msg == nil and plrx ~= lp then
+            print(plrx.Name)
             setscriptable(plrx, "CloudEditCameraCoordinateFrame", true) --why tf was this breaking it
         end
         plrx.Changed:Connect(function(p)
