@@ -255,8 +255,8 @@ mod['Listen'] = function(channel : number)
 end
 
 -- checking for messages, thanks for the updated one nathan
-local passed = pcall(function()
-    setscriptable(lp, "CloudEditCameraCoordinateFrame", true)
+passed = nil;passed = pcall(function()
+    repeat task.wait() setscriptable(lp, "CloudEditCameraCoordinateFrame", true) until isscriptable(lp, "CloudEditCameraCoordinateFrame")
     local rah; rah = lp:GetPropertyChangedSignal("CloudEditCameraCoordinateFrame"):Connect(function()
         rah:Disconnect()
     end)
