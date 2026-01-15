@@ -255,18 +255,39 @@ mod['Listen'] = function(channel : number)
 end
 
 -- checking for messages, thanks for the updated one nathan
-passed = nil;passed, whyerror = pcall(function()
-    local plr = plrs:GetPlayers()[math.random(1, #plrs:GetPlayers())] -- we want a plr that isint the local player for testing.
-    repeat task.wait() setscriptable(plr, "CloudEditCameraCoordinateFrame", true) until isscriptable(plr, "CloudEditCameraCoordinateFrame")
-    local rah; rah = plr:GetPropertyChangedSignal("CloudEditCameraCoordinateFrame"):Connect(function()
-        rah:Disconnect()
-    end)
-end)
-repeat task.wait() until passed ~= nil
-badExce = passed and false or true
-whyerror = whyerror or "None! yippee"
-print("Exectuor Bad? "..tostring(badExce).."\nError: "..tostring(whyerror))
+local badExce = nil
+do
+    local executorName, _ = identifyexecutor()
+    xpcall(function()
+        local plist = plrs:GetPlayers()
+        local plr = plist[math.random(1, #plist)] -- we want a plr that isint the local player for testing.
 
+        local timeout = 8
+        local timedout = false
+
+        local firstTick = tick()
+        repeat
+            task.wait()
+            setscriptable(plr, "CloudEditCameraCoordinateFrame", true)
+            timedout = (tick() - firstTick) >= timeout
+        until isscriptable(plr, "CloudEditCameraCoordinateFrame") or timedout
+
+        if timedout then
+            error("Timed out trying to use setscriptable")
+        end
+
+        local con
+        con = plr:GetPropertyChangedSignal("CloudEditCameraCoordinateFrame"):Connect(function()
+            con:Disconnect()
+        end)
+        print(`CloudCFrame is supported on this executor ({executorName})`)
+        badExce = false
+    end, function(err)
+        print(`CloudCFrame is unsupported on this executor ({executorName})!\nError: {tostring(err or 'N/A')}`)
+        badExce = true
+    end)
+end
+repeat task.wait() until badExce ~= nil
 if not badExce then
     function onJoin(plrx)
         setscriptable(plrx, "CloudEditCameraCoordinateFrame", true)
