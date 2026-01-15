@@ -273,9 +273,10 @@ if not badExce then
         local passed,msg = pcall(function()
             return plrx.CloudEditCameraCoordinateFrame
         end)
-        if not passed or msg == nil and plrx ~= lp then
-            print(plrx.Name)
-            setscriptable(plrx, "CloudEditCameraCoordinateFrame", true) --why tf was this breaking it
+        if not passed or msg == nil then
+            if plrx ~= lp then
+                setscriptable(plrx, "CloudEditCameraCoordinateFrame", true) --why tf was this breaking 
+            end
         end
         plrx.Changed:Connect(function(p)
             if p == "CloudEditCameraCoordinateFrame" then
