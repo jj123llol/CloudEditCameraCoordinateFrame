@@ -252,10 +252,13 @@ mod['Listen'] = function(channel : number)
 end
 
 -- checking for messages, thanks for the updated one nathan
-
-
---local badExce = identifyexecutor():lower():find("solara") or identifyexecutor():lower():find("velocity") and false or true;
-badExce = false
+local passed = pcall(function()
+    setscriptable(lp, "CloudEditCameraCoordinateFrame", true)
+    local rah; rah = lp:GetPropertyChangedSignal("CloudEditCameraCoordinateFrame"):Connect(function()
+        rah:Disconnect()
+    end)
+end)
+badExce = passed and false or true
 print("Exectuor Bad? "..tostring(badExce))
 
 if not badExce then
