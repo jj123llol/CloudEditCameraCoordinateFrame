@@ -258,10 +258,12 @@ local badExce = false;
 local change
 change = lp.Changed:Connect(function(p)
     if p == "CloudEditCameraCoordinateFrame" then
-        badExce = identifyexecutor():lower():find("delta") and true or false
+        --badExce = identifyexecutor():lower():find("delta") and true or false
         change:Disconnect()
     end
 end)
+setscriptable(lp, "CloudEditCameraCoordinateFrame", true)
+task.wait(5)
 mod.cloudcf["set"](CFrame.new(0, 9999, 999))
 local start = tick()
 repeat task.wait() until badExce ~= false or tick() - start > 1
