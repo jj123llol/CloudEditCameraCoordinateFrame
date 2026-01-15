@@ -257,9 +257,8 @@ end
 local badExce = false;
 local change
 change = lp.Changed:Connect(function(p)
-    print(p)
     if p == "CloudEditCameraCoordinateFrame" then
-        badExce = false
+        badExce = identifyexecutor():lower():find("delta") and true or false
         change:Disconnect()
     end
 end)
@@ -275,9 +274,9 @@ if not badExce then
         end)
         if not passed or msg == nil then
             if not identifyexecutor():lower():find("delta") then
-                --setscriptable(plrx, "CloudEditCameraCoordinateFrame", true)
+                setscriptable(plrx, "CloudEditCameraCoordinateFrame", true)
             elseif plrx.Name ~= lp.Name then
-                --setscriptable(plrx, "CloudEditCameraCoordinateFrame", true)
+                setscriptable(plrx, "CloudEditCameraCoordinateFrame", true)
             end
         end
         plrx.Changed:Connect(function(p)
