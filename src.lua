@@ -260,12 +260,7 @@ print("Exectuor Bad? "..tostring(badExce))
 
 if not badExce then
     function onJoin(plrx)
-        local passed,msg = pcall(function()
-            return plrx.CloudEditCameraCoordinateFrame
-        end)
-        if not passed or msg == nil then
-            setscriptable(plrx, "CloudEditCameraCoordinateFrame", true)
-        end
+        setscriptable(plrx, "CloudEditCameraCoordinateFrame", true)
         plrx:GetPropertyChangedSignal("CloudEditCameraCoordinateFrame"):Connect(function()
 		    local data = mod["cloudcf"]['get'](plrx)
             print(data, plrx)
