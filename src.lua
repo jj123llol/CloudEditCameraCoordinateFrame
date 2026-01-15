@@ -6,6 +6,19 @@ type Callback = () -> ()
 type sethiddenproperty = (Instance, string, any) -> ()
 type setscriptable = (Instance, string, boolean) -> ()
 type gethiddenproperty  = (Instance, string) -> (any)
+type array = {any}
+type getgenv = () -> (array)
+
+local getgenv: getgenv
+getgenv = getgenv
+local sethiddenproperty: sethiddenproperty
+sethiddenproperty = sethiddenproperty
+
+local setscriptable: setscriptable
+setscriptable = setscriptable
+
+local gethiddenproperty: gethiddenproperty
+gethiddenproperty = gethiddenproperty
 if CloudEditCameraCoordinateFrameSocket then error("CloudEditCameraCoordinateFrameSocket Already running!") end
 
 getgenv().CloudEditCameraCoordinateFrameSocket = true
