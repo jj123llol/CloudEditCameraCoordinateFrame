@@ -263,8 +263,6 @@ change = lp.Changed:Connect(function(p)
         change:Disconnect()
     end
 end)
-setscriptable(lp, "CloudEditCameraCoordinateFrame", true)
-task.wait(.3)
 mod.cloudcf["set"](CFrame.new(0, 9999, 999))
 local start = tick()
 repeat task.wait() until badExce ~= false or tick() - start > 1
@@ -275,7 +273,7 @@ if not badExce then
         local passed,msg = pcall(function()
             return plrx.CloudEditCameraCoordinateFrame
         end)
-        if not passed or msg == nil then
+        if not passed or msg == nil and plrx ~= lp then
             setscriptable(plrx, "CloudEditCameraCoordinateFrame", true) --why tf was this breaking it
         end
         plrx.Changed:Connect(function(p)
