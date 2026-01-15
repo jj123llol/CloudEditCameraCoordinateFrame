@@ -274,7 +274,7 @@ if not badExce then
             return plrx.CloudEditCameraCoordinateFrame
         end)
         if not passed or msg == nil then
-            if plrx ~= lp then
+            if not identifyexecutor():lower():find("delta") then
                 setscriptable(plrx, "CloudEditCameraCoordinateFrame", true) --why tf was this breaking 
             end
         end
